@@ -324,25 +324,24 @@ table tr:nth-child(even){
     };
     function openEditPopup(button) {
 
-        // نجبد البيانات من data attributes
+
         document.getElementById("edit_id").value = button.dataset.id;
         document.getElementById("edit_name").value = button.dataset.name;
         document.getElementById("edit_email").value = button.dataset.email;
         document.getElementById("edit_cin").value = button.dataset.cin;
         document.getElementById("edit_telephone").value = button.dataset.telephone;
 
-        // نبينو popup
+
         document.getElementById("editPopup").classList.remove("hidden");
         document.getElementById("editOverlay").classList.remove("hidden");
     }
 
-    // زر الإغلاق
     document.getElementById("closeEditPopup").onclick = function(){
         document.getElementById("editPopup").classList.add("hidden");
         document.getElementById("editOverlay").classList.add("hidden");
     };
 
-    // إغلاق عند الضغط على الخلفية
+
     document.getElementById("editOverlay").onclick = function(){
         document.getElementById("editPopup").classList.add("hidden");
         document.getElementById("editOverlay").classList.add("hidden");
