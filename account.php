@@ -212,7 +212,7 @@ if(!isset($_SESSION['user_id'])){
    data-solde="<?php echo $row['balance']; ?>"
    data-client="<?php echo $row['client_id']; ?>"
    onclick="openEditCompte(this)">Edit</a>
-   <a href="list_transactions.php?id=<?php echo $row['compte_id']; ?>">
+   <a class="edit-btn" href="list_transactions.php?id=<?php echo $row['compte_id']; ?>">
     Transactions
 </a>
 

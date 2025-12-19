@@ -6,6 +6,10 @@ if(!isset($_SESSION['user_id'])){
     header("Location: index.php");
     exit;
 }
+$clientsCount = mysqli_fetch_row(mysqli_query($conn,"SELECT COUNT(*) FROM client"))[0];
+$accountsCount = mysqli_fetch_row(mysqli_query($conn,"SELECT COUNT(*) FROM compte"))[0];
+$transactionsCount = mysqli_fetch_row(mysqli_query($conn,"SELECT COUNT(*) FROM transactions"))[0];
+$totalBalance = mysqli_fetch_row(mysqli_query($conn,"SELECT SUM(balance) FROM compte"))[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,6 +88,9 @@ if(!isset($_SESSION['user_id'])){
             font-size:18px;
             color:#555;
         }
+        .card a{
+            text-decoration:none;
+        }
 
     </style>
 </head>
@@ -100,18 +107,22 @@ if(!isset($_SESSION['user_id'])){
 <div class="container">
     <div class="card">
         <h3><a href="clients.php">Clients</a></h3>
-        <p>Manage clients</p>
+        <p><?= $clientsCount ?></p>
     </div>
 
     <div class="card">
         <h3><a href="account.php">Comptes</a></h3>
-        <p>View & create comptes</p>
+        <p><?= $accountsCount ?></p>
     </div>
 
     <div class="card">
         <h3><a href="list_transactions.php">Transactions</a></h3>
-        <p>Dépôt / Retrait</p>
+        <p><?= $transactionsCount ?></p>
     </div>
+      <div class="card">
+    <h3>Solde total</h3>
+    <p><?= number_format($totalBalance,2) ?> DH</p>
+  </div>
 </div>
 
 </body>
